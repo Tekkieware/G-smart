@@ -1,4 +1,4 @@
-# G-smart
+ # G-smart
 G-Smart is a versatile web gallery designed for efficient image upload, capture, organization, and editing. This repository hosts the source code for the G-Smart application, providing users with tools to manage their image collections effectively.
 # Key Features:
 
@@ -31,6 +31,7 @@ G-Smart is a versatile web gallery designed for efficient image upload, capture,
 - Make Changes: Make your desired changes to the codebase using your preferred code editor.
 
 - Commit Changes: Once you've made your changes, commit them to your branch with descriptive commit messages:
+- 
  <code>git add .
  git commit -m "Your descriptive commit message"</code>
 
