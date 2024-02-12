@@ -38,22 +38,30 @@ G-Smart is a versatile web gallery designed for efficient image upload, capture,
 
 - **Clone the Repository:** Clone the forked repository to your local machine using Git. Use the following command in your terminal:
 
-  <code>git clone https://github.com/your-username/g-smart.git</code>
+  ```bash
+  git clone https://github.com/your-username/g-smart.git
+  ```
   
 - **Create a Branch:** Create a new branch to work on your feature or bug fix using a descriptive branch name:
   
-   <code>git checkout -b feature-name</code>
+  ```bash
+  git checkout -b feature-name</code>
+  ```
 
 - **Make Changes:** Make your desired changes to the codebase using your preferred code editor.
 
 - **Commit Changes:** Once you've made your changes, commit them to your branch with descriptive commit messages:
   
-   <code>git add .
-    git commit -m "Your descriptive commit message"</code>
+  ```bash
+  git add .
+  git commit -m "Your descriptive commit message"</code>
+  ```
 
 - **Push Changes:** Push your changes to your forked repository:
   
-   <code>git push origin feature-name</code>
+  ```bash
+  git push origin feature-name</code>
+  ```
 
 - **Create a Pull Request:** Go to the GitHub page of your forked repository and create a new pull request, explaining the changes you've made and the problem you're solving.
 
