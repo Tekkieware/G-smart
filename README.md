@@ -22,4 +22,4 @@ G-Smart is a versatile web gallery designed for efficient image upload, capture,
 
 - Clone the Repository: Clone the forked repository to your local machine using Git. Use the following command in your terminal:
 
-  <code>git clone https://github.com/your-username/g-smart.git</code>
+  <center><code>git clone https://github.com/your-username/g-smart.git</code></center>
