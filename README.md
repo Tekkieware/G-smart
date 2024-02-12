@@ -14,6 +14,22 @@ G-Smart is a versatile web gallery designed for efficient image upload, capture,
 
 - **Secure and Scalable:** G-Smart prioritizes security and scalability, ensuring your images are protected while offering room for growth and expansion.
 
+## Getting Started
+
+   First, run the development server:
+   
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+   
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
 ##  Contributing:
 
 - We welcome contributions from the community to enhance G-Smart's features, fix bugs, and improve overall performance. To contribute, follow these steps:
@@ -22,22 +38,30 @@ G-Smart is a versatile web gallery designed for efficient image upload, capture,
 
 - **Clone the Repository:** Clone the forked repository to your local machine using Git. Use the following command in your terminal:
 
-  <code>git clone https://github.com/your-username/g-smart.git</code>
+  ```bash
+  git clone https://github.com/your-username/g-smart.git
+  ```
   
 - **Create a Branch:** Create a new branch to work on your feature or bug fix using a descriptive branch name:
   
-   <code>git checkout -b feature-name</code>
+  ```bash
+  git checkout -b feature-name
+  ```
 
 - **Make Changes:** Make your desired changes to the codebase using your preferred code editor.
 
 - **Commit Changes:** Once you've made your changes, commit them to your branch with descriptive commit messages:
   
-   <code>git add .
-    git commit -m "Your descriptive commit message"</code>
+  ```bash
+  git add .
+  git commit -m "Your descriptive commit message"
+  ```
 
 - **Push Changes:** Push your changes to your forked repository:
   
-   <code>git push origin feature-name</code>
+  ```bash
+  git push origin feature-name
+  ```
 
 - **Create a Pull Request:** Go to the GitHub page of your forked repository and create a new pull request, explaining the changes you've made and the problem you're solving.
 
