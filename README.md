@@ -41,4 +41,7 @@ G-Smart is a versatile web gallery designed for efficient image upload, capture,
 
 - Create a Pull Request: Go to the GitHub page of your forked repository and create a new pull request, explaining the changes you've made and the problem you're solving.
 
-- Review and Collaborate: After creating the pull request, collaborate with project maintainers to review and refine your changes.
+- Review and Collaborate: After creating the pull request, reach out to me so we can review your changes.
+
+
+Thanks.
