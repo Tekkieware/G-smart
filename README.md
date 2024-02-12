@@ -14,6 +14,22 @@ G-Smart is a versatile web gallery designed for efficient image upload, capture,
 
 - **Secure and Scalable:** G-Smart prioritizes security and scalability, ensuring your images are protected while offering room for growth and expansion.
 
+## Getting Started
+
+   First, run the development server:
+   
+   ```bash
+   npm run dev
+   # or
+   yarn dev
+   # or
+   pnpm dev
+   # or
+   bun dev
+   ```
+   
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
 ##  Contributing:
 
 - We welcome contributions from the community to enhance G-Smart's features, fix bugs, and improve overall performance. To contribute, follow these steps:
