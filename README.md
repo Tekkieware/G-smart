@@ -33,7 +33,7 @@ G-Smart is a versatile web gallery designed for efficient image upload, capture,
 - Commit Changes: Once you've made your changes, commit them to your branch with descriptive commit messages:
   
    <code>git add .
-   git commit -m "Your descriptive commit message"</code>
+    git commit -m "Your descriptive commit message"</code>
 
 - Push Changes: Push your changes to your forked repository:
   
