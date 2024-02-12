@@ -45,7 +45,7 @@ G-Smart is a versatile web gallery designed for efficient image upload, capture,
 - **Create a Branch:** Create a new branch to work on your feature or bug fix using a descriptive branch name:
   
   ```bash
-  git checkout -b feature-name</code>
+  git checkout -b feature-name
   ```
 
 - **Make Changes:** Make your desired changes to the codebase using your preferred code editor.
@@ -54,13 +54,13 @@ G-Smart is a versatile web gallery designed for efficient image upload, capture,
   
   ```bash
   git add .
-  git commit -m "Your descriptive commit message"</code>
+  git commit -m "Your descriptive commit message"
   ```
 
 - **Push Changes:** Push your changes to your forked repository:
   
   ```bash
-  git push origin feature-name</code>
+  git push origin feature-name
   ```
 
 - **Create a Pull Request:** Go to the GitHub page of your forked repository and create a new pull request, explaining the changes you've made and the problem you're solving.
