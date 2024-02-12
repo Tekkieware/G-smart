@@ -14,7 +14,7 @@ G-Smart is a versatile web gallery designed for efficient image upload, capture,
 
 - **Secure and Scalable:** G-Smart prioritizes security and scalability, ensuring your images are protected while offering room for growth and expansion.
 
-#  Contributing:
+##  Contributing:
 
 - We welcome contributions from the community to enhance G-Smart's features, fix bugs, and improve overall performance. To contribute, follow these steps:
 
