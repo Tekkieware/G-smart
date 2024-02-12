@@ -25,3 +25,17 @@
 .gallery-text{
 font-family: 'Rubik Scribble', system-ui;
 }
+
+.sign-in{
+  border: 2px solid #34a853;
+  border-radius: 20px;
+}
+
+.button-text{
+  font-family: 'Protest Strike', sans-serif;
+  font-weight: bold;
+  border: 3px solid #000;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 20px;
+}

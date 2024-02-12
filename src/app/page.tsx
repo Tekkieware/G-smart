@@ -1,3 +1,5 @@
+'use client'
+import GoogleLogin from "@/components/GoogleLogin";
 import Image from "next/image";
 
 export default function Home() {
@@ -15,21 +17,21 @@ export default function Home() {
             />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 w-full justify-center justify-items-center from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none ">
-            <div>
+            <div className="">
             <h5 className="hero-cap text-center p-4">
             Welcome to G-smart, your curated gallery. Discover a world of art. 
             </h5>
             </div>
 
-            <div>
+            <div className="grid grid-cols-1 justify-items-center px-16 py-10 sign-in ">
             <Image
-              src="/images/logo.png"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={300}
+              src="/images/google.png"
+              alt="google Logo"
+              width={130}
               height={24}
               priority
             />
+            <GoogleLogin />
             </div>
             <div className="gallery p-10 relative max-w-xl mx-auto">
             <Image
