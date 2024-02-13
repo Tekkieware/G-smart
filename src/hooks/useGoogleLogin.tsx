@@ -8,10 +8,9 @@ import Image from 'next/image'
 
 
 
-
-
-const GoogleLogin: React.FC = () => {
+const useGoogleLogin = () => {
   const [user, setUser] = useState<User | null>()
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
   const router = useRouter()
 
   useEffect(() => {
@@ -19,34 +18,16 @@ const GoogleLogin: React.FC = () => {
     const unsubscribe =  auth.onAuthStateChanged((user) => {
       if(user){
         setUser(user);
-
+        setIsLoggedIn(true)
       }else{
         setUser(null);
+        setIsLoggedIn(false)
       }
     });
     return () => unsubscribe();
   }, [])
 
-  const signInWithGoogle = async () => {
-    const auth  = getAuth(app)
-    const provider = new GoogleAuthProvider(); 
-    try{
-      await signInWithPopup(auth, provider);
-      console.log(user);
-      router.push("/gallery")
-    }catch(error: any){
-      console.log("Error signing in with google", error.message)
-    }
-  }
-
-  return (
-    <div className=''>
-      <button onClick={signInWithGoogle} className='button-text'>
-        Sign in with google 
-        
-        </button>
-    </div>
-  );
+  return {name: user?.displayName, email: user?.email, isLoggedIn: isLoggedIn}
 };
 
-export default GoogleLogin;
+export default useGoogleLogin;
