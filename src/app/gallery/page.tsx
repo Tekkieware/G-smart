@@ -1,37 +1,40 @@
 'use client'
-import React, {useEffect, useState} from 'react'    
-import {getAuth, signOut, onAuthStateChanged, User} from 'firebase/auth'   
+import React, {useEffect, useState} from 'react'     
 import {useRouter} from 'next/navigation'
 import app from '../../auth/firebase'
 import { Anybody } from 'next/font/google'
+import '../../app/globals.css'
 
+interface user{
+    name: string,
+    email: string,
+}
 function Gallery() {
-    const auth = getAuth(app);
-    const router = useRouter();
-    const [user, setUser] = useState<User | null>()
+    const a = process.env.a
+  const [userDetails, setUserDetails] = useState<user>()
+  const router = useRouter()
+  const retrieveUserData = (): user | null =>{
+    const data = localStorage.getItem("userDetails");
+    return data ? JSON.parse(data) as user : null
+  }
 
  useEffect(() =>{
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-        if(user){
-            setUser(user)
-        }else{
-            router.push("/")
-        }
-    });
-    return() => unsubscribe();
- }, [auth, router])
+    const user = retrieveUserData()
+    if (user?.name){
+        setUserDetails(user)
+    }else{
+        router.push("/")
+    }
+    
+ }, [userDetails])
 
  const handleLogout = async () =>{
-    try{
-        await signOut(auth);
-        router.push("/")
-    }catch(error:any){
-        console.log("error signing out:", error.message);
-    }
+    localStorage.removeItem("userDetails")
+    setUserDetails({name: "", email: ""})
  }
   return (
     <div>
-        <h1>Welcome to your gallery, {user?.displayName}</h1>
+        <h1>Welcome to your gallery, {userDetails?.name}</h1>
         <button onClick={handleLogout}>Log Out</button>
     </div>
   )

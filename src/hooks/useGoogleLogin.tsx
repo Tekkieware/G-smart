@@ -10,24 +10,21 @@ import Image from 'next/image'
 
 const useGoogleLogin = () => {
   const [user, setUser] = useState<User | null>()
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
-  const router = useRouter()
 
   useEffect(() => {
     const auth = getAuth(app);
     const unsubscribe =  auth.onAuthStateChanged((user) => {
       if(user){
         setUser(user);
-        setIsLoggedIn(true)
+        
       }else{
         setUser(null);
-        setIsLoggedIn(false)
       }
     });
     return () => unsubscribe();
   }, [])
 
-  return {name: user?.displayName, email: user?.email, isLoggedIn: isLoggedIn}
+  return {name: user?.displayName, email: user?.email}
 };
 
 export default useGoogleLogin;

@@ -1,18 +1,42 @@
 'use client'
+import {useEffect} from 'react'
 import Image from "next/image";
 import { signInWithPopup, GoogleAuthProvider, User } from 'firebase/auth'
 import { useRouter } from 'next/navigation'
 import app from '../auth/firebase'
 import { getAuth } from 'firebase/auth'
+import useGoogleLogin from '@/hooks/useGoogleLogin';
+
+interface user{
+  name: string,
+  email: string,
+}
 
 export default function Home() {
+  const router = useRouter();
+  const user = useGoogleLogin()
+  
 
-  const router = useRouter()
+  const retrieveUserData = (): user | null =>{
+    const data = localStorage.getItem("userDetails");
+    return data ? JSON.parse(data) as user : null
+  }
+
+  useEffect(() =>{
+    console.log(process.env.API_KEY)
+    const user = retrieveUserData()
+    if (user){
+        router.push("gallery")
+    }
+    console.log(process.env.API_KEY)
+ }, )
+
   const signInWithGoogle = async () => {
     const auth = getAuth(app)
     const provider = new GoogleAuthProvider();
     try {
       await signInWithPopup(auth, provider);
+      localStorage.setItem("userDetails", JSON.stringify(user))
       router.push("/gallery")
     } catch (error: any) {
       console.log("Error signing in with google", error.message)
