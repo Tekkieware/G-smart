@@ -23,12 +23,10 @@ export default function Home() {
   }
 
   useEffect(() =>{
-    console.log(process.env.API_KEY)
     const user = retrieveUserData()
     if (user){
         router.push("gallery")
     }
-    console.log(process.env.API_KEY)
  }, )
 
   const signInWithGoogle = async () => {
@@ -58,7 +56,7 @@ export default function Home() {
           priority
         />
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 w-full justify-center justify-items-center from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none ">
+      <div className="grid grid-cols-1 lg:grid-cols-3 w-full justify-center justify-items-center from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
         <div className="">
           <h5 className="hero-cap text-center p-4">
             Welcome to G-smart, your curated gallery. Discover a world of art.
@@ -95,7 +93,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+    
 
 
     </main>

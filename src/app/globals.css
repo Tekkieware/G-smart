@@ -39,3 +39,7 @@ font-family: 'Rubik Scribble', system-ui;
   padding: 10px;
   font-size: 20px;
 }
+
+.bg-red{
+  background-color: red !important;
+}
