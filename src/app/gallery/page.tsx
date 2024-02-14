@@ -6,8 +6,8 @@ import { Anybody } from 'next/font/google'
 import '../../app/globals.css'
 import Image from 'next/image'
 import { FaK, FaUpload } from "react-icons/fa6";
-import { IoCloseSharp } from "react-icons/io5";next-cloudinary
-import { CldUploadWidget, CldUploadWidgetPropsChildren} from '';
+import { IoCloseSharp } from "react-icons/io5";
+import { CldUploadWidget, CldUploadWidgetPropsChildren} from 'next-cloudinary';
 
 
 interface user {
