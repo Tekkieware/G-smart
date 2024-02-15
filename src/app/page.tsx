@@ -24,7 +24,7 @@ export default function Home() {
 
   useEffect(() =>{
     const user = retrieveUserData()
-    if (user){
+    if (user?.name){
         router.push("gallery")
     }
  }, )

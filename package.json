@@ -12,6 +12,7 @@
     "cloudinary": "^2.0.1",
     "dotenv": "^16.4.3",
     "firebase": "^10.8.0",
+    "mongoose": "^8.1.2",
     "next": "14.1.0",
     "next-cloudinary": "^5.20.0",
     "react": "^18",
