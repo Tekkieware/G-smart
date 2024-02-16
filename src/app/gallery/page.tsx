@@ -17,9 +17,19 @@ interface user {
   name: string,
   email: string,
 }
+
+interface image{
+  owner: string,
+  url: string,
+  __v: number,
+  _id: string
+}
+
+
 function Gallery() {
   const [userDetails, setUserDetails] = useState<user>()
   const [defaultView, setDefaultView] = useState<boolean>(true)
+  const [images, setImages] = useState<image[]>()
   const router = useRouter()
   const retrieveUserData = (): user | null => {
     const data = localStorage.getItem("userDetails");
@@ -33,9 +43,15 @@ function Gallery() {
     } else {
       router.push("/")
     }
-
+    getUserImages(user?.email!)
+   
   }, [])
 
+  const getUserImages = async (owner: string) => {
+    const response =  await fetch(`/api/image?owner=${owner}`, {method: 'GET', headers: {'Content-Type': 'application/json'}})
+    const data = await response.json()
+    setImages(data)
+}
 
   return (
     <div className='min-h-screen p-12 md:p-16 justify-center home-content'>
@@ -67,16 +83,33 @@ function Gallery() {
       {
         defaultView ?
       
+        
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div>
-          <CldImage height={500} width={1000} className="h-auto max-w-full rounded-lg" src="http://res.cloudinary.com/dcajjwtba/image/upload/v1708075609/j7n5xskopsuesp8gkorb.png" alt='not visible' />
+        {images?.length! > 0 ?
+          images?.map((image, id)=>{
+            return <div>
+            <CldImage height={500} width={1000} className="h-auto max-w-full rounded-lg" src={image.url} alt='not visible' />
+          </div>
+          })
+
+          : 
+         <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <span className="font-medium">Your have no images.</span> Click the upload button to add to your gallery.
         </div>
+        }
       </div>
       :
       <div className="flex items-center justify-center py-4 md:py-8 flex-wrap">
-        
-      <CldImage height={500} width={1000} className="h-auto max-w-full rounded-lg" src="http://res.cloudinary.com/dcajjwtba/image/upload/v1708075609/j7n5xskopsuesp8gkorb.png" alt='not visible' />
+        {images?.length! > 0 ?
+          images?.map((image, id)=>{
+       return <CldImage height={500} width={1000} className="h-auto max-w-full rounded-lg" src={image.url} alt='not visible' />
+             })
 
+          : 
+         <div className="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <span className="font-medium">Your have no images.</span> Click the upload button to add to your gallery.
+        </div>
+        }
       </div>
       }
     </div>

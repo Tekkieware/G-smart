@@ -1,16 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '../../../lib/db'    
 import Image from '../../../lib/models'
-import {NextRequest} from 'next/server'
+import {NextRequest, NextResponse} from 'next/server'
 
-export async function GET(req: NextApiRequest, res: NextApiResponse){
+export async function GET(req: NextRequest){
   await dbConnect();
-
+  const owner = req.nextUrl.searchParams.get('owner') as string;
     try {
-      const data = await Image.find(); 
-      return res.status(200).json(data);
+      const data = await Image.find({owner: owner}); 
+      return Response.json(data)
     } catch (error) {
-      return new Response('Not found:' + error, { status: 500 })
+      return NextResponse.json({ error: error }, { status: 500 });
     }
 };
 
