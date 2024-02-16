@@ -6,15 +6,12 @@ import {NextRequest} from 'next/server'
 export async function GET(req: NextApiRequest, res: NextApiResponse){
   await dbConnect();
 
-  if (req.method === 'GET') {
     try {
       const data = await Image.find(); 
-
-      res.status(200).json(data);
+      return res.status(200).json(data);
     } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' });
+      return new Response('Not found:' + error, { status: 500 })
     }
-  } 
 };
 
 

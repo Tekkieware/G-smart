@@ -1,5 +1,5 @@
 import React from 'react'
-import { CldUploadWidget, CldUploadWidgetPropsChildren} from 'next-cloudinary';
+import { CldUploadWidget} from 'next-cloudinary';
 
 interface user {
     email: string,
@@ -7,6 +7,7 @@ interface user {
 const Upload: React.FC<user> =({email}) =>{
     const storeImageMetadata = async (data:any) => {
         const url = data.url
+        console.log(url)
         const owner = email
         await fetch('/api/image', {
             method: 'POST', 
