@@ -28,7 +28,6 @@ export async function POST(req: Request){
   
     try {
       await newImage.save();
-      console.log("it worked")
       return new Response('Image created successfully', { status: 201 })
     } catch (error) {
       console.error('Error creating image:', error);
