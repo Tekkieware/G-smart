@@ -8,6 +8,7 @@ import Image from 'next/image'
 import { FaK, FaUpload } from "react-icons/fa6";
 import { IoCloseSharp } from "react-icons/io5";
 import { CldUploadWidget, CldUploadWidgetPropsChildren} from 'next-cloudinary';
+import {CreateImageRequest, CreateImageResponse} from '../../lib/types'
 
 
 interface user {
@@ -31,12 +32,32 @@ function Gallery() {
       router.push("/")
     }
 
-  }, [userDetails])
+  }, [])
 
   const handleLogout = async () => {
     localStorage.removeItem("userDetails")
     setUserDetails({ name: "", email: "" })
   }
+
+  const storeImageMetadata = async (data:any) => {
+    const url = data.url
+    const owner = userDetails?.email
+    await fetch('/api/image', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            url: url, owner: owner
+        })
+    }).then((res) => {
+        console.log(res)
+    }).catch((e) => {
+        console.log(e)
+    })
+}
+
+  
 
   return (
     <div className='min-h-screen p-12 md:p-16 justify-center home-content'>
@@ -55,6 +76,9 @@ function Gallery() {
             <CldUploadWidget 
             signatureEndpoint="api/sign-cloudinary-params"
             uploadPreset='g-smart'
+            onUpload={(result) => {
+              storeImageMetadata(result?.info)
+            }}
             >
               {({ open }) => {
                 return (
