@@ -7,6 +7,8 @@ interface user {
 const Upload: React.FC<user> =({email}) =>{
     const storeImageMetadata = async (data:any) => {
         const url = data.url
+        const public_id = data.public_id
+        console.log(data)
         console.log(url)
         const owner = email
         await fetch('/api/image', {
@@ -15,7 +17,8 @@ const Upload: React.FC<user> =({email}) =>{
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                url: url, owner: owner
+                url: url, owner: owner, public_id: public_id
+
             })
         }).then((res) => {
             console.log(res)

@@ -17,17 +17,17 @@ export async function GET(req: NextRequest){
 
 export async function POST(req: Request){
   await dbConnect();
-  const {url, owner} = await req.json()
+  const {url, owner, public_id} = await req.json()
   const newImage = new Image({
       url: url,
-      owner: owner
+      owner: owner,
+      public_id: public_id
     }); 
   
     try {
       await newImage.save();
       return new Response('Image created successfully', { status: 201 })
     } catch (error) {
-      console.error('Error creating image:', error);
       return new Response('Error creating image:' + error, { status: 500 })
     }
 }

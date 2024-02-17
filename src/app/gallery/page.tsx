@@ -11,6 +11,8 @@ import { CreateImageRequest, CreateImageResponse } from '../../lib/types'
 import Upload from './components/Upload'
 import User from './components/User'
 import { CldImage } from 'next-cloudinary'
+import Photo from './components/Photo'
+import ImageCard from './components/ImageCard'
 
 
 interface user {
@@ -22,7 +24,8 @@ interface image{
   owner: string,
   url: string,
   __v: number,
-  _id: string
+  _id: string,
+  public_id: string
 }
 
 
@@ -30,6 +33,7 @@ function Gallery() {
   const [userDetails, setUserDetails] = useState<user>()
   const [defaultView, setDefaultView] = useState<boolean>(true)
   const [images, setImages] = useState<image[]>()
+  const [imageCardUrl, setImageCardUrl] = useState<string>("")
   const router = useRouter()
   const retrieveUserData = (): user | null => {
     const data = localStorage.getItem("userDetails");
@@ -75,20 +79,26 @@ function Gallery() {
 
       <div className="flex items-end justify-center py-4 md:py-8 flex-wrap">
         <button type="button" className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800">All categories</button>
-        <button type="button" className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800">Bags</button>
-        <button type="button" className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800">Electronics</button>
-        <button type="button" className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800">Gaming</button>
+        <button type="button" className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800">Vacations</button>
+        <button type="button" className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800">Work</button>
+        <button type="button" className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800">School</button>
         <button type="button" onClick={() =>setDefaultView(!defaultView)} className="toggle-button">Toggle View</button>
+        {
+          imageCardUrl === "" ?<></> :
+          <ImageCard setImg={setImageCardUrl} url={imageCardUrl} />
+        }
       </div>
+    
       {
         defaultView ?
       
         
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {images?.length! > 0 ?
           images?.map((image, id)=>{
-            return <div>
-            <CldImage height={500} width={1000} className="h-auto max-w-full rounded-lg" src={image.url} alt='not visible' />
+            return <div className='relative'>
+            <CldImage  width="1000"height="600" crop="thumb" className="h-auto max-w-full rounded-lg" src={image.url} alt='not visible' />
+            <Photo url={image.url} id={image._id} setUrl={setImageCardUrl} />
           </div>
           })
 

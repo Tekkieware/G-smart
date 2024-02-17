@@ -9,6 +9,9 @@ const imageSchema: Schema = new Schema(
 
     owner: {
       type: String,
+    },
+    public_id:{
+      type: String
     }
   }
 )
