@@ -9,7 +9,6 @@ const Upload: React.FC<user> =({email}) =>{
         const url = data.url
         const public_id = data.public_id
         console.log(data)
-        console.log(url)
         const owner = email
         await fetch('/api/image', {
             method: 'POST', 

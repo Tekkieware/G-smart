@@ -98,7 +98,7 @@ function Gallery() {
           images?.map((image, id)=>{
             return <div className='relative'>
             <CldImage  width="1000"height="600" crop="thumb" className="h-auto max-w-full rounded-lg" src={image.url} alt='not visible' />
-            <Photo url={image.url} id={image._id} setUrl={setImageCardUrl} />
+            <Photo url={image.url} id={image._id} setUrl={setImageCardUrl} public_id={image.public_id} />
           </div>
           })
 
