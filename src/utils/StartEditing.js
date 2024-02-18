@@ -1,5 +1,31 @@
 import React from 'react'
+const cloud = require('cloudinary').v2;
+import generateSignature from './generateSignature'
 
+cloud.config({
+  cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+  api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
+});
+
+const updateImage = async (publicId, imagePath) => {
+  await cloud.uploader.destroy(publicId, function(result) { console.log("Deleted") })
+  const paramsToSign = {
+    public_id: publicId,
+    timestamp: Date.now() 
+  };
+
+  const s = generateSignature(paramsToSign)
+  const a = await cloud.uploader.upload(imagePath, {
+    public_id: publicId,
+    signature: s,
+    cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+    api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
+    timestamp: Date.now()
+})
+console.log(a)
+}
 
 function StartEditing(publicId) {
     const myEditor = cloudinary.mediaEditor();
@@ -12,6 +38,7 @@ function StartEditing(publicId) {
         resizeAndCrop: {
           flip: true,
           rotate: true,
+      
           presets: [
             "original",
             "square",
@@ -40,6 +67,8 @@ function StartEditing(publicId) {
       myEditor.destroy();
     });
     myEditor.on("export", function(data) {
+      const url = data.assets[0].url;
+      updateImage(publicId, url)
       myEditor.destroy();
     });
   }

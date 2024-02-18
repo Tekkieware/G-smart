@@ -96,7 +96,7 @@ function Gallery() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {images?.length! > 0 ?
           images?.map((image, id)=>{
-            return <div className='relative'>
+            return <div className='relative' key={id}>
             <CldImage  width="1000"height="600" crop="thumb" className="h-auto max-w-full rounded-lg" src={image.url} alt='not visible' />
             <Photo url={image.url} id={image._id} setUrl={setImageCardUrl} public_id={image.public_id} />
           </div>

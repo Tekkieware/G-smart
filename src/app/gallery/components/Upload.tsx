@@ -27,7 +27,7 @@ const Upload: React.FC<user> =({email}) =>{
     }
   return (
     <CldUploadWidget 
-            signatureEndpoint="api/sign-cloudinary-params"
+            signatureEndpoint="/api/sign-cloudinary-params"
             uploadPreset='g-smart'
             onUpload={(result) => {
               storeImageMetadata(result?.info)
