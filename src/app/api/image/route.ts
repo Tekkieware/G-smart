@@ -32,7 +32,7 @@ export async function POST(req: Request){
     }
 }
 
-
+/*
 export async function DELETE(req: NextApiRequest, res: NextApiResponse){
   await dbConnect();
   if (req.method === 'DELETE'){
@@ -47,3 +47,5 @@ export async function DELETE(req: NextApiRequest, res: NextApiResponse){
   }
   }
 }
+
+*/
