@@ -13,6 +13,7 @@ import User from './components/User'
 import { CldImage } from 'next-cloudinary'
 import Photo from './components/Photo'
 import ImageCard from './components/ImageCard'
+import Loader from './components/Loader'
 
 
 interface user {
@@ -54,7 +55,7 @@ function Gallery() {
 
   const getUserImages = async (owner: string) => {
     setLoading(true)
-    const response =  await fetch(`/api/image?owner=${owner}`, {method: 'GET', headers: {'Content-Type': 'application/json'}})
+    const response =  await fetch(`/api/image?owner=${owner}`, {method: 'GET', headers: {'Content-Type': 'application/json'}, next: { revalidate: 10 }})
     const data = await response.json()
     setImages(data)
     setLoading(false)
@@ -67,7 +68,7 @@ const resetPage =() =>{
   return (
     <div className='min-h-screen p-12 md:p-16 justify-center home-content'>
       <div className='grid grid-cols-1 lg:grid-cols-3 w-full'>
-        <div>
+        <div className='justify-self-center md:justify-self-start'>
           <Image
             src="/images/logo.png"
             alt="Vercel Logo"
@@ -77,7 +78,10 @@ const resetPage =() =>{
             priority
           />
         </div>
-        <div className='justify-self-center'>
+        <div className='justify-self-center invisible md:visible'>
+          <Upload resetPage={resetPage} email={userDetails?.email!} />
+        </div>
+        <div className='justify-self-center upload-small md:invisible'>
           <Upload resetPage={resetPage} email={userDetails?.email!} />
         </div>
         <User name={userDetails?.name!} setUser={setUserDetails} />
@@ -96,7 +100,7 @@ const resetPage =() =>{
       </div>
     
       
-        {loading ?<div><p>Loading.....</p></div> :
+        {loading ?<Loader /> :
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {
           images?.map((image, id)=>{
@@ -114,6 +118,10 @@ const resetPage =() =>{
         }
       </div>
       }
+     
+
+
+
     </div>
   )
 }

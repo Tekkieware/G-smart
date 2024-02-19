@@ -81,3 +81,9 @@ z-index: 1;
   width: 100vw;
   height: 100vh;
 }
+
+.upload-small{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}

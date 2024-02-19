@@ -1,6 +1,7 @@
 import React from 'react'
 import { CldUploadWidget} from 'next-cloudinary';
 import { useRouter } from 'next/navigation'
+import { MdOutlineFileUpload } from "react-icons/md";
 
 interface user {
     email: string,
@@ -21,8 +22,9 @@ const Upload: React.FC<user> =({email, resetPage}) =>{
             body: JSON.stringify({
                 url: url, owner: owner, public_id: public_id
 
-            })
-        }).then((res) => {
+            }),
+            next: { revalidate: 10 }
+        },).then((res) => {
             console.log(res)
         }).catch((e) => {
             console.log(e)
@@ -40,7 +42,7 @@ const Upload: React.FC<user> =({email, resetPage}) =>{
               {({ open }) => {
                 return (
                   <button onClick={() => open()} className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-primary rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  New Photo
+                  <MdOutlineFileUpload size={20} />&nbsp;New Photo
                     </button>
                 );       
               }}
