@@ -9,7 +9,6 @@ cloud.config({
 });
 
 const updateImage = async (publicId, imagePath) => {
-  await cloud.uploader.destroy(publicId, function(result) { console.log("Deleted") })
   const paramsToSign = {
     public_id: publicId,
     timestamp: Date.now() 
@@ -68,7 +67,6 @@ function StartEditing(publicId) {
     });
     myEditor.on("export", function(data) {
       const url = data.assets[0].url;
-      updateImage(publicId, url)
       myEditor.destroy();
     });
   }

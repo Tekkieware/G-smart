@@ -1,10 +1,13 @@
 import React from 'react'
 import { CldUploadWidget} from 'next-cloudinary';
+import { useRouter } from 'next/navigation'
 
 interface user {
     email: string,
+    resetPage: () => void
   }
-const Upload: React.FC<user> =({email}) =>{
+const Upload: React.FC<user> =({email, resetPage}) =>{
+  const router = useRouter()
     const storeImageMetadata = async (data:any) => {
         const url = data.url
         const public_id = data.public_id
@@ -32,6 +35,7 @@ const Upload: React.FC<user> =({email}) =>{
             onUpload={(result) => {
               storeImageMetadata(result?.info)
             }}
+            onClose={() => resetPage()}
             >
               {({ open }) => {
                 return (

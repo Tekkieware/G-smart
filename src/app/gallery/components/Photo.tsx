@@ -21,9 +21,6 @@ const Photo: React.FC<image> = ({ url, id, setUrl, public_id }) => {
       <div className='zoom-edit'>
         <button onClick={()=>setUrl(url)} className='px-5'><MdZoomInMap size={25} color='#fff' /></button><button><TbPhotoEdit onClick={() =>handleUpload(public_id)} size={25} color='#fff' /></button> 
       </div>
-      <div className='favorite'>
-        <button><MdOutlineFavoriteBorder color='#e35907' size={25} /></button>
-      </div>
       <Script
         src="https://media-editor.cloudinary.com/all.js"
         type="text/javascript"

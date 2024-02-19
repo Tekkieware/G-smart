@@ -15,7 +15,6 @@ interface user{
 export default function Home() {
   const router = useRouter();
   const user = useGoogleLogin()
-  
 
   const retrieveUserData = (): user | null =>{
     const data = localStorage.getItem("userDetails");
