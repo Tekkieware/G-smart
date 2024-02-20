@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation'
 import app from '../auth/firebase'
 import { getAuth } from 'firebase/auth'
 import useGoogleLogin from '@/hooks/useGoogleLogin';
+import { FcGoogle } from "react-icons/fc";
+import Footer from './components/Footer';
 
 interface user{
   name: string,
@@ -55,27 +57,11 @@ export default function Home() {
           priority
         />
       </div>
-      <div className="grid grid-cols-1 lg:grid-cols-3 w-full justify-center justify-items-center from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
+      <div className="grid w-full justify-center justify-items-center from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
         <div className="">
-          <h5 className="hero-cap text-center p-4">
-            Welcome to G-smart, your curated gallery. Discover a world of art.
-          </h5>
-        </div>
-
-        <div className="grid grid-cols-1 justify-items-center px-16 py-10 sign-in ">
-          <Image
-            src="/images/google.png"
-            alt="google Logo"
-            width={130}
-            height={24}
-            priority
-          />
-          <div className=''>
-            <button onClick={signInWithGoogle} className='button-text'>
-              Sign in with google
-
-            </button>
-          </div>
+          <p className="hero-cap text-lg  font-semibold text-center pb-10">
+            Welcome to G-smart, your curated gallery. <br/>Discover a world of art.
+          </p>
         </div>
         <div className="gallery p-10 relative max-w-xl mx-auto">
           <Image
@@ -86,11 +72,16 @@ export default function Home() {
             height={24}
             priority
           />
-          <div className="absolute inset-0 bg-gray-700 opacity-60 rounded-md"></div>
+          <div className="absolute inset-0 bg-gray-700 opacity-20 rounded-md"></div>
           <div className="absolute inset-0 flex items-center justify-center">
-            <h2 className="text-[#fff] hover:text-[#e9580b] text-4xl font-bold gallery-text">Explore Gallery</h2>
+          <div className=''>
+            <button  onClick={signInWithGoogle} className="button-text inline-flex items-center px-3 py-2 text-md font-medium text-center text-white bg-primary rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+            <FcGoogle size={20} />&nbsp; Sign in with Gooogle
+                    </button>
+          </div>
           </div>
         </div>
+        <Footer />
       </div>
     
 

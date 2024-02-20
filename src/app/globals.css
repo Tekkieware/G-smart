@@ -11,7 +11,6 @@
 
 .hero-cap{
   font-family: 'Protest Strike', sans-serif;
-  font-size: 50px;
 
 }
 
@@ -34,10 +33,9 @@ font-family: 'Rubik Scribble', system-ui;
 .button-text{
   font-family: 'Protest Strike', sans-serif;
   font-weight: bold;
-  border: 3px solid #000;
   border-radius: 10px;
-  padding: 10px;
-  font-size: 20px;
+  background-color: #f7f7f7;
+  color: #000;
 }
 
 .bg-red{
