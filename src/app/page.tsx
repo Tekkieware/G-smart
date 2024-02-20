@@ -63,7 +63,7 @@ export default function Home() {
             Welcome to G-smart, your curated gallery. <br/>Discover a world of art.
           </p>
         </div>
-        <div className="gallery p-10 relative max-w-xl mx-auto">
+        <div className="gallery p-2 md:p-10 relative max-w-xl mx-auto">
           <Image
             src="/images/gallery.png"
             alt="Vercel Logo"

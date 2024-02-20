@@ -7,6 +7,11 @@
 
 .home-content {
   background: #d9dbd8;
+  min-height: 80vh;
+}
+
+body{
+  background: #d9dbd8;
 }
 
 .hero-cap{
@@ -84,4 +89,6 @@ z-index: 1;
   position: fixed;
   bottom: 20px;
   right: 20px;
+  z-index: 1;
 }
+

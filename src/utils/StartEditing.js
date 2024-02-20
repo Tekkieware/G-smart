@@ -1,5 +1,5 @@
 import React from 'react'
-const cloud = require('cloudinary').v2;
+import {v2 as cloud} from 'cloudinary'
 import generateSignature from './generateSignature'
 
 cloud.config({
@@ -8,22 +8,31 @@ cloud.config({
   api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
 });
 
-const updateImage = async (publicId, imagePath) => {
-  const paramsToSign = {
-    public_id: publicId,
-    timestamp: Date.now() 
-  };
+const storeImageMetadata = async (data) => {
+  const url = data.url
+  const public_id = data.public_id
+  const user = JSON.parse(localStorage.getItem("userDetails"))
+  const owner = user.email
+  await fetch('/api/image', {
+      method: 'POST', 
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          url: url, owner: owner, public_id: public_id
 
-  const s = generateSignature(paramsToSign)
-  const a = await cloud.uploader.upload(imagePath, {
-    public_id: publicId,
-    signature: s,
-    cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
-    api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
-    api_secret: process.env.NEXT_PUBLIC_CLOUDINARY_API_SECRET,
-    timestamp: Date.now()
-})
-console.log(a)
+      }),
+      next: { revalidate: 10 }
+  },).then((res) => {
+      console.log("success")
+  }).catch((e) => {
+      console.log(e)
+  }) 
+}
+async function uploadNewImage (imagePath) {
+  const response = await cloud.uploader.upload(imagePath,{})
+  await storeImageMetadata(response)
+
 }
 
 function StartEditing(publicId) {
@@ -65,9 +74,11 @@ function StartEditing(publicId) {
     myEditor.on("close", function(data) {
       myEditor.destroy();
     });
-    myEditor.on("export", function(data) {
-      const url = data.assets[0].url;
+    myEditor.on("export", async function(data) {
+      const url = data.assets[0].secureUrl;
+      await uploadNewImage(url)
       myEditor.destroy();
+      location.reload()
     });
   }
 

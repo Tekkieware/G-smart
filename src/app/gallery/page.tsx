@@ -14,6 +14,8 @@ import { CldImage } from 'next-cloudinary'
 import Photo from './components/Photo'
 import ImageCard from './components/ImageCard'
 import Loader from './components/Loader'
+import {categories} from './utils/categories'
+import Footer from '../components/Footer'
 
 
 interface user {
@@ -66,6 +68,7 @@ const resetPage =() =>{
 }
 
   return (
+    <>
     <div className='min-h-screen p-12 md:p-16 justify-center home-content'>
       <div className='grid grid-cols-1 lg:grid-cols-3 w-full'>
         <div className='justify-self-center md:justify-self-start'>
@@ -89,10 +92,14 @@ const resetPage =() =>{
 
 
       <div className="flex items-end justify-center py-4 md:py-8 flex-wrap">
-        <button type="button" className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800">All categories</button>
-        <button type="button" className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800">Vacations</button>
-        <button type="button" className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800">Work</button>
-        <button type="button" className="text-gray-900 border border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-full text-base font-medium px-5 py-2.5 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800">School</button>
+      {!loading &&
+      <div>
+        {categories?.map((categorie, id) =>{
+          return <button key={id} type="button" className="text-gray-900 border-white hover:border-gray-200 dark:border-gray-900 dark:bg-gray-900 dark:hover:border-gray-700 bg-white focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-base font-medium px-5 py-1 text-center me-3 mb-3 dark:text-white dark:focus:ring-gray-800">{categorie.name}</button>
+        })}
+        
+      </div>
+      }
         {
           imageCardUrl === "" ?<></> :
           <ImageCard setImg={setImageCardUrl} url={imageCardUrl} />
@@ -121,8 +128,10 @@ const resetPage =() =>{
      
 
 
-
+      
     </div>
+    <Footer />
+    </>
   )
 }
 

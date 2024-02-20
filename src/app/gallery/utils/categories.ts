@@ -1,0 +1,1 @@
+export const categories = [{"name" : "All Categories"},{"name" : "Vacations"},{"name" : "School"},{"name" : "Work"}]
