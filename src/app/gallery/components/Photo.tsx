@@ -34,7 +34,7 @@ const Photo: React.FC<image> = ({ url, id, setUrl, public_id }) => {
 
       </div>
       <div className='zoom-edit'>
-        <button className='px-5'><MdZoomInMap size={25} color='#fff' /></button><button><TbPhotoEdit onClick={() => handleEdit(public_id)} size={25} color='#fff' /></button>
+        <button onClick={()=>setUrl(url)} className='px-5'><MdZoomInMap size={25} color='#fff' /></button><button><TbPhotoEdit onClick={() => handleEdit(public_id)} size={25} color='#fff' /></button>
 
       </div>
       <Script
