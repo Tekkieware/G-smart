@@ -1,5 +1,9 @@
  # G-smart
-G-Smart is a versatile web gallery designed for efficient image upload, capture, organization, and editing. This repository hosts the source code for the G-Smart application, providing users with tools to manage their image collections effectively.
+G-Smart is a versatile web gallery designed for efficient image upload, capture, organization, and editing. This repository hosts the source code for the G-Smart application, providing users with tools to manage their image collections effectively. 
+
+#Live link
+CI/CD deployed at [https://g-smart.vercel.app/](https://g-smart.vercel.app/)
+
 ## Key Features:
 
 - **Image Upload:** Easily upload images from your device to the G-Smart gallery, enabling quick access and organization.
