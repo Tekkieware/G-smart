@@ -45,7 +45,7 @@ export default function Home() {
 
 
   return (
-    <main className="flex min-h-screen flex-col gap-12 p-12 md:p-16 home-content">
+    <main className="flex min-h-screen flex-col p-5 gap-12 home-content">
 
       <div className="flex w-full items-end justify-center md:p-6 from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
         <Image
